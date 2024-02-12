@@ -33,4 +33,8 @@ public class MemoryMemberRepository implements MemberRepository {
     public List<Member> findAll() {
         return new ArrayList<>(store.values());  // hash에 있는 값들 list로 반환
     }
+
+    public void clearStore() {
+        store.clear();
+    }
 }
