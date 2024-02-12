@@ -1,5 +1,6 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Hello;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,15 +36,13 @@ public class HelloController {
         return hello;
     }
 
-    static class Hello{
-        private String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
+    @GetMapping("hello-api-builder")
+    @ResponseBody
+    public Hello helloApiBuilder(@RequestParam("name") String name,
+                                 @RequestParam("age") int age) {
+        return Hello.builder()
+                .name(name)
+                .age(20)
+                .build();
     }
 }
